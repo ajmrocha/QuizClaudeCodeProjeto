@@ -26,7 +26,9 @@ export async function POST(req: NextRequest) {
   let body: PostResultRequest;
   try {
     body = await req.json();
-  } catch {
+    console.log("Received payload:", body);
+  } catch (err) {
+    console.error("Failed to parse JSON:", err);
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
@@ -34,18 +36,23 @@ export async function POST(req: NextRequest) {
 
   // Validate inputs
   if (!nickname || !/^[A-Za-z0-9_-]{3,20}$/.test(nickname)) {
+    console.error("Validation failed: Invalid nickname", { nickname });
     return NextResponse.json({ error: "Invalid nickname" }, { status: 400 });
   }
   if (!VALID_TRACKS.includes(track)) {
+    console.error("Validation failed: Invalid track", { track });
     return NextResponse.json({ error: "Invalid track" }, { status: 400 });
   }
   if (!VALID_SIZES.includes(roundSize)) {
+    console.error("Validation failed: Invalid round size", { roundSize });
     return NextResponse.json({ error: "Invalid round size" }, { status: 400 });
   }
   if (!Array.isArray(answers) || answers.length === 0) {
+    console.error("Validation failed: No answers provided", { answersLength: answers?.length });
     return NextResponse.json({ error: "No answers provided" }, { status: 400 });
   }
   if (!answers.every((a) => typeof a.qid === "string" && typeof a.chosen === "boolean")) {
+    console.error("Validation failed: Invalid answer format", { answers });
     return NextResponse.json({ error: "Invalid answer format" }, { status: 400 });
   }
 
@@ -65,6 +72,7 @@ export async function POST(req: NextRequest) {
     .gte("created_at", windowStart);
 
   if (rlErr) {
+    console.error("Rate limit check failed:", rlErr);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
   if ((count ?? 0) >= RATE_LIMIT_MAX) {
@@ -82,6 +90,7 @@ export async function POST(req: NextRequest) {
     .in("id", questionIds);
 
   if (qErr || !questions) {
+    console.error("Failed to fetch questions:", qErr);
     return NextResponse.json({ error: "Failed to fetch questions" }, { status: 500 });
   }
 
@@ -92,7 +101,7 @@ export async function POST(req: NextRequest) {
   }));
 
   const { score, correctCount, percentage, badgeTier, answers: answerResults } =
-    calculateScore(answers, scoringQuestions, roundSize);
+    calculateScore(answers, scoringQuestions, answers.length);
 
   // Persist result
   const { data: result, error: insertErr } = await supabase
@@ -115,15 +124,20 @@ export async function POST(req: NextRequest) {
     .single();
 
   if (insertErr || !result) {
-    return NextResponse.json({ error: "Failed to save result" }, { status: 500 });
+    console.error("Failed to save result:", insertErr);
+    return NextResponse.json({ error: "Failed to save result", details: insertErr }, { status: 500 });
   }
 
   // Get ranking position
-  const { count: rankPosition } = await supabase
+  const { count: rankPosition, error: rankErr } = await supabase
     .from("results")
     .select("*", { count: "exact", head: true })
     .eq("track", track)
     .or(`score.gt.${score},and(score.eq.${score},duration_ms.lt.${durationMs})`);
+  
+  if (rankErr) {
+    console.error("Failed to get rank position:", rankErr);
+  }
 
   const response: PostResultResponse = {
     id: result.id,
