@@ -1,0 +1,79 @@
+{
+  "home": {
+    "title": "Claude Code Quiz",
+    "subtitle": "Teste seu conhecimento sobre a CLI oficial da Anthropic",
+    "nickname_label": "Nickname",
+    "nickname_placeholder": "seu_nick",
+    "nickname_hint": "3–20 caracteres, apenas letras, números, _ e -",
+    "track_label": "Trilha",
+    "track_beginner": "Iniciante",
+    "track_intermediate": "Intermediário",
+    "track_advanced": "Avançado",
+    "round_size_label": "Perguntas por rodada",
+    "timer_label": "Cronômetro (30s por pergunta)",
+    "language_label": "Idioma",
+    "start_button": "Começar"
+  },
+  "quiz": {
+    "question_progress": "Pergunta {current}/{total}",
+    "true_button": "Verdadeiro",
+    "false_button": "Falso",
+    "next_button": "Próxima",
+    "quit_button": "Desistir",
+    "quit_confirm": "Tem certeza? O progresso será perdido.",
+    "quit_confirm_yes": "Sim, desistir",
+    "quit_confirm_no": "Continuar",
+    "correct": "Correto!",
+    "incorrect": "Incorreto!",
+    "doc_link": "Ver documentação",
+    "time_up": "Tempo esgotado!"
+  },
+  "result": {
+    "title": "Resultado",
+    "score_label": "Pontuação",
+    "percentage_label": "Aproveitamento",
+    "time_label": "Tempo total",
+    "ranking_position": "#{position} no ranking",
+    "no_badge": "Não atingiu 70% — tente novamente",
+    "badge_bronze": "Badge Bronze",
+    "badge_silver": "Badge Prata",
+    "badge_gold": "Badge Ouro",
+    "share_button": "Compartilhar",
+    "review_button": "Ver revisão",
+    "practice_errors_button": "Praticar só os erros",
+    "ranking_button": "Ver ranking",
+    "play_again_button": "Jogar de novo",
+    "copy_link": "Copiar link",
+    "copied": "Copiado!"
+  },
+  "review": {
+    "title": "Revisão",
+    "practice_errors_button": "Praticar só os erros",
+    "your_answer": "Sua resposta",
+    "correct_answer": "Resposta correta",
+    "true": "Verdadeiro",
+    "false": "Falso",
+    "doc_link": "Ver documentação"
+  },
+  "ranking": {
+    "title": "Ranking",
+    "tab_beginner": "Iniciante",
+    "tab_intermediate": "Intermediário",
+    "tab_advanced": "Avançado",
+    "col_position": "#",
+    "col_nickname": "Nickname",
+    "col_score": "Pontos",
+    "col_percentage": "%",
+    "col_time": "Tempo",
+    "col_date": "Data",
+    "empty": "Sem resultados ainda."
+  },
+  "categories": {
+    "business": "Negócio",
+    "cli": "CLI",
+    "hooks": "Hooks",
+    "mcp": "MCP",
+    "agent_sdk": "Agent SDK",
+    "ide": "IDE"
+  }
+}

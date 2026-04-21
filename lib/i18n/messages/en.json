@@ -1,0 +1,79 @@
+{
+  "home": {
+    "title": "Claude Code Quiz",
+    "subtitle": "Test your knowledge of Anthropic's official CLI",
+    "nickname_label": "Nickname",
+    "nickname_placeholder": "your_nick",
+    "nickname_hint": "3–20 characters, letters, numbers, _ and - only",
+    "track_label": "Track",
+    "track_beginner": "Beginner",
+    "track_intermediate": "Intermediate",
+    "track_advanced": "Advanced",
+    "round_size_label": "Questions per round",
+    "timer_label": "Timer (30s per question)",
+    "language_label": "Language",
+    "start_button": "Start"
+  },
+  "quiz": {
+    "question_progress": "Question {current}/{total}",
+    "true_button": "True",
+    "false_button": "False",
+    "next_button": "Next",
+    "quit_button": "Quit",
+    "quit_confirm": "Are you sure? Progress will be lost.",
+    "quit_confirm_yes": "Yes, quit",
+    "quit_confirm_no": "Continue",
+    "correct": "Correct!",
+    "incorrect": "Incorrect!",
+    "doc_link": "View documentation",
+    "time_up": "Time's up!"
+  },
+  "result": {
+    "title": "Result",
+    "score_label": "Score",
+    "percentage_label": "Accuracy",
+    "time_label": "Total time",
+    "ranking_position": "#{position} in ranking",
+    "no_badge": "Did not reach 70% — try again",
+    "badge_bronze": "Bronze Badge",
+    "badge_silver": "Silver Badge",
+    "badge_gold": "Gold Badge",
+    "share_button": "Share",
+    "review_button": "Review answers",
+    "practice_errors_button": "Practice wrong answers",
+    "ranking_button": "View ranking",
+    "play_again_button": "Play again",
+    "copy_link": "Copy link",
+    "copied": "Copied!"
+  },
+  "review": {
+    "title": "Review",
+    "practice_errors_button": "Practice wrong answers",
+    "your_answer": "Your answer",
+    "correct_answer": "Correct answer",
+    "true": "True",
+    "false": "False",
+    "doc_link": "View documentation"
+  },
+  "ranking": {
+    "title": "Ranking",
+    "tab_beginner": "Beginner",
+    "tab_intermediate": "Intermediate",
+    "tab_advanced": "Advanced",
+    "col_position": "#",
+    "col_nickname": "Nickname",
+    "col_score": "Score",
+    "col_percentage": "%",
+    "col_time": "Time",
+    "col_date": "Date",
+    "empty": "No results yet."
+  },
+  "categories": {
+    "business": "Business",
+    "cli": "CLI",
+    "hooks": "Hooks",
+    "mcp": "MCP",
+    "agent_sdk": "Agent SDK",
+    "ide": "IDE"
+  }
+}
